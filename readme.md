@@ -68,7 +68,7 @@ $grid-breakpoints: (
 ```
 
 you can also import the dist css file into you scss if you are good with the defaults
-`@import '../js/responsive-wrapper/dist/responsive-wrapper.css';`
+`@import './responsive-wrapper/dist/responsive-wrapper.css';`
 
 this adds the responsive breaks points as css variables on the root which is really all that's needed for the library to detect where the breakpoints are set.  I'm hoping this can somehow work with the WordPress block editor when breakpoints are added to theme.json
 
