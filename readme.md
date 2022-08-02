@@ -95,5 +95,13 @@ let responsiveWrapper = new ResponsiveWrapper();
 if you want to use the scripts directly you should get and verify all your elements on the page
 
 ```
-let 
-responsiveWrapper
+let el1 = document.querySelector('#element-one');
+let el2 = document.querySelector('#element-two');
+if( el1 && el2 ){
+    responsiveWrapper.wrap({
+        breakpoints: ['md', 'lg', 'xl', 'xxl'],
+    })
+}
+```
+
+...more to come
