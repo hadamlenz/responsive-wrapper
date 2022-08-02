@@ -1,10 +1,13 @@
 # Responsive Wrappers
-supply functionality for making a div wrap child elements at responsive breakpoints
+supply functionality for making a div wrap child elements at responsive breakpoints.  
+This repo is a work in progress and should not be used in production just yet
 
 starts with bootstrap 5 breakpoints
 you can  add the dist files to the page you are working on 
-`<link rel='stylesheet' id='responsive-wrapper' href="./src/js/responsive-wrapper/dist/responsive-wrapper.css"></script>`
-`<script src="./src/js/responsive-wrapper/dist/responsive-wrapper.js"></script>`
+```
+<link rel='stylesheet' id='responsive-wrapper' href="./src/js/responsive-wrapper/dist/responsive-wrapper.css"></script>
+<script src="./src/js/responsive-wrapper/dist/responsive-wrapper.js"></script>
+```
 
 all the functions are available with responsiveWrapper
 
