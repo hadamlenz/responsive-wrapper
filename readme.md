@@ -6,7 +6,7 @@ Todo:
 * Make it available with NPM
 * Testing testing testing
 * Test if this works without bootstrap
-* build examples
+* build examples for https://htmlpreview.github.io/
 
 starts with bootstrap 5 breakpoints
 you can  add the distribution files to the page you are working on 
@@ -16,7 +16,7 @@ you can  add the distribution files to the page you are working on
 <script src="./src/js/responsive-wrapper/dist/responsive-wrapper.js"></script>
 ```
 
-you can apply the functionality by setting some attributes on the wrapper and children you want to change.  Its really important that all of the elements that you are using have an id attribute.  The script will look for the `responsive-wrapper` class.  The wrapper will wrap the child elements when the current breakpoint up is in the `data-rw-breakpoints`
+you can apply the functionality by setting some attributes on the wrapper and children you want to change.  Its really important that all of the elements that you are using have an id attribute.  The script will look for the `responsive-wrapper` class.  The wrapper will wrap the child elements when the current breakpoint up is in the `data-rw-breakpoints`.  For the below example the wrapper will wrap the 2 elements when `0 < width < 768px`
 
 ```
 <div id="row-sm" class="responsive-wrapper" data-rw-breakpoints="xs,sm">
@@ -24,6 +24,8 @@ you can apply the functionality by setting some attributes on the wrapper and ch
     <div id="site-controls">Site Controls</div>
 </div>
 ```
+
+todo: add more here descibing grouping without having to use the children of a wrapper
 
 ## functions
 
