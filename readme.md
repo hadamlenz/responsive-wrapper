@@ -39,7 +39,6 @@ The functions are available with `responsiveWrapper` class if you added the scri
 responsiveWrapper.wrap(wrapper, objects, options = [])
 ```
 
-
 ```
 /**
  * create a new ResponsiveWrapperFactory object and return it.  This allows you to double wrap things like you have to do with bootstrap
@@ -95,13 +94,23 @@ let responsiveWrapper = new ResponsiveWrapper();
 if you want to use the scripts directly you should get and verify all your elements on the page
 
 ```
-let el1 = document.querySelector('#element-one');
-let el2 = document.querySelector('#element-two');
-if( el1 && el2 ){
-    responsiveWrapper.wrap({
-        breakpoints: ['md', 'lg', 'xl', 'xxl'],
-    })
-}
+document.addEventListener("DOMContentLoaded", function () {
+    //get the elements for wrapping
+    let el1 = document.querySelector('#element-one');
+    let el2 = document.querySelector('#element-two');
+
+    //make sure the exist
+    if( el1 && el2 ){
+        //build a wrapper, making a new div with the id #my-new-wrapper using the 2 elements from above
+        responsiveWrapper.wrap('my-new-wrapper',[el1,el2]{
+            breakpoints: ['md', 'lg', 'xl', 'xxl'],
+        })
+    }
+});
 ```
+
+## Contributions and Rebuilding the distribution files
+the project is built with @wordpress/scripts because this is ulimatly meant for WordPress and it makes life simple...  Just one devDependencies.  If you want to fork and make this your own you need to use `npm run build` to build the dist
+
 
 ...more to come

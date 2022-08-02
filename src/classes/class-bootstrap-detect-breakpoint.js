@@ -64,7 +64,7 @@ export default class ResponsiveWrapperBootstrapDetectBreakpoint {
         let breakpointNamesString = window.getComputedStyle(document.documentElement).getPropertyValue('--bs-breakpoints');
 
         if (!breakpointNamesString) {
-            console.log('--bs-breakpoints have not been set correctly');
+            console.error('--bs-breakpoints have not been set correctly');
             return false;
         } else {
             //console.log(breakpointNamesString);

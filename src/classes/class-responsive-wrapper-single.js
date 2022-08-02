@@ -71,7 +71,7 @@ export default class ResponsiveWrapperSingle {
         //make the wrapper
         if (false === this.makeWrapper(wrapper, options)) {
             //return false if we could not make the wrapper
-            console.log('could not make the wrapper ' + this.wrapperId);
+            console.error('could not make the wrapper ' + this.wrapperId);
             return false
         }
 
@@ -80,7 +80,7 @@ export default class ResponsiveWrapperSingle {
 
         if (false === this.makeChildren(objects)) {
             //return false if we could not make the childElements  array
-            console.log('we need elements to wrap for ' + this.wrapperId);
+            console.error('we need elements to wrap for ' + this.wrapperId);
             return false;
         }
 
@@ -144,7 +144,7 @@ export default class ResponsiveWrapperSingle {
             //make sure the wrapper isn't already on the page, this will cause issues with 2 elemenets with the same ID
             let possibleWrapper = document.querySelector('#' + wrapper);
             if (possibleWrapper) {
-                console.log('wrapper already on page');
+                //console.log('wrapper already on page');
                 return false;
             }
 
@@ -163,7 +163,7 @@ export default class ResponsiveWrapperSingle {
                 this.wrapperId = wrapper.id;
             } else {
                 //if not bail
-                console.log('the wrapper element needs an ID for this to work')
+                console.error('the wrapper element needs an ID for this to work')
                 return false;
             }
             //set the wrapper as this.wrapper
@@ -175,7 +175,7 @@ export default class ResponsiveWrapperSingle {
 
         } else {
             //we need an ID as a string or Element!!!
-            console.log('id is not a string or a dom element: ' + typeof wrapper);
+            console.error('id is not a string or a dom element: ' + typeof wrapper);
             return false;
         }
 
@@ -263,7 +263,7 @@ export default class ResponsiveWrapperSingle {
         //its already wrapped
         //we dont need to wrap it any further
         if (this.isWrapped) {
-            console.log('we dont need to wrap it any further');
+            //console.log('we dont need to wrap it any further');
             return false;
         } else {
             //console.log('wrapping: ' + this.wrapperId);
@@ -272,7 +272,7 @@ export default class ResponsiveWrapperSingle {
         //make sure we have elements here 
         //this is a double check
         if (this.childElements === null || this.childElements.length <= 0) {
-            console.log('no elements');;
+            //console.log('no elements');;
             return false;
         }
 
@@ -309,7 +309,7 @@ export default class ResponsiveWrapperSingle {
                 return false;
             }
         } else {
-            console.log( 'the wrapper contains the parent, sanity is lost' );
+            console.error( 'the wrapper contains the parent, sanity is lost' );
             return false;
         }
 
@@ -339,7 +339,7 @@ export default class ResponsiveWrapperSingle {
         //its already unwrapped
         //we dont need to unwrap it any further
         if (!this.isWrapped) {
-            console.log('we dont need to unwrap it any further');
+            //console.log('we dont need to unwrap it any further');
             return false;
         } else {
             //console.log('unwrapping:' + this.wrapperId);
@@ -384,7 +384,7 @@ export default class ResponsiveWrapperSingle {
         if (this.wrapperId && (typeof this.wrapperId === 'string' || this.wrapperId instanceof String)) {
             this.wrapper.setAttribute('id', this.wrapperId);
         } else {
-            console.log('id is not a string');
+            //console.log('id is not a string');
         }
     }
 

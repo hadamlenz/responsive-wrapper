@@ -54,7 +54,7 @@ export default class ResponsiveWrapperFactory {
 
         //we need wrappers
         if (!Array.isArray(wrappers) || !wrappers.length > 0) {
-            console.log('wrappers are not here or are not an array')
+            console.error('wrappers are not here or are not an array')
             return false;
         }
 
@@ -72,7 +72,7 @@ export default class ResponsiveWrapperFactory {
                 }
 
                 if (!element) {
-                    console.log('element for wrapping ' + elements[i] + ' is not here');
+                    console.error('element for wrapping ' + elements[i] + ' is not here');
                     return false;
                 }
             }
@@ -100,7 +100,7 @@ export default class ResponsiveWrapperFactory {
                     return false;
                 }
             } else {
-                console.log('the wrapper is of type ' + typeof wrappers[i] + ' and cannot be used to wrap');
+                console.error('the wrapper is of type ' + typeof wrappers[i] + ' and cannot be used to wrap');
                 return false
             }
 
@@ -165,7 +165,7 @@ export default class ResponsiveWrapperFactory {
                 if (thisWrapper !== null) {
                     this.wrapperObjects.push(thisWrapper);
                 } else {
-                    console.log('wrapper could not be made in the factory');
+                    //console.error('wrapper could not be made in the factory');
                     return false;
                 }
 

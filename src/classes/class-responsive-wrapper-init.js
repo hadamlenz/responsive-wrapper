@@ -28,7 +28,7 @@ export default class ResponsiveWrapperInit {
             //console.log( 'hasChildNodes:' + possibleWrappers[i].hasChildNodes() )
             //console.log( 'hasData' + possibleWrappers[i].hasAttribute('data-rw-group') );
             if (!possibleWrappers[i].hasChildNodes() && !possibleWrappers[i].hasAttribute('data-rw-group')) {
-                console.log('we dont have children to wrap');
+                console.error('we dont have children to wrap');
                 continue;
             }
 
