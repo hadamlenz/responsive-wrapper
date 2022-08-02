@@ -1,0 +1,8 @@
+:root{
+    $breakpoints: ();
+    @each $name,$value in $grid-breakpoints {
+        --bs-breakpoint-#{$name}: #{$value};
+        $breakpoints: append($breakpoints,$name,$separator: comma);
+    }
+    --bs-breakpoints:#{$breakpoints};
+}
