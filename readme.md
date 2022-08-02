@@ -1,16 +1,17 @@
 # Responsive Wrappers
-supply functionality for making a div wrap child elements at responsive breakpoints.  
+supply functionality for making a div wrap child elements at responsive breakpoints. 
 This repo is a work in progress and should not be used in production just yet.
 
 Todo:
 * Make it available with NPM
 * Testing testing testing
+* Test if this works without bootstrap
 
 starts with bootstrap 5 breakpoints
-you can  add the dist files to the page you are working on 
+you can  add the distribution files to the page you are working on 
 
 ```
-<link rel='stylesheet' id='responsive-wrapper' href="./src/js/responsive-wrapper/dist/responsive-wrapper.css"></script>
+<link rel='stylesheet' id='responsive-wrapper' href="./src/js/responsive-wrapper/dist/responsive-wrapper.css"/>
 <script src="./src/js/responsive-wrapper/dist/responsive-wrapper.js"></script>
 ```
 
@@ -23,20 +24,35 @@ you can apply the functionality by setting some attributes on the wrapper and ch
 </div>
 ```
 
-all the functions are available with responsiveWrapper class
-
 ## functions
 
+The functions are available with `responsiveWrapper` class if you added the scripts and styles to the page.
+
 ```
-wrap()
+/**
+ * create a new ResponsiveWrapperSingle object and return it
+ * @param {HTMLElement or String} wrapper.  if its an HTMLElement it is expected that the element is on the page, if it's a string, the element will be created
+ * @param {Array of HTMLElement} elements that will be wrapped
+ * @param {Object} options see options for the class in class-responsive-wrapper-single.js
+ * @returns ResponsiveWrapperSingle
+ */
+responsiveWrapper.wrap(wrapper, objects, options = [])
 ```
 
 
 ```
-wraps()
+/**
+ * create a new ResponsiveWrapperFactory object and return it.  This allows you to double wrap things like you have to do with bootstrap
+ * @param {Array of HTMLElement} wrappers 
+ * @param {Array of HTMLElement} objects 
+ * @param {Object} options 
+ * @returns ResponsiveWrapperFactory
+ */
+responsiveWrapper.wraps(wrappers, elements, options=[])
 ```
 
-you can build it with whatever you like using $grid-breakpoints building into your project
+## Building Styles
+you can build he styles with whatever breakpoints you like using the $grid-breakpoints css var like bootstrap 5 does
 
 ```
 $grid-breakpoints: (
@@ -51,11 +67,10 @@ $grid-breakpoints: (
 @import './responsive-wrapper/src/sass/_responsive-wrapper.scss';
 ```
 
-you can also import the dist css file into scss
+you can also import the dist css file into you scss if you are good with the defaults
 `@import '../js/responsive-wrapper/dist/responsive-wrapper.css';`
 
-this adds the responsive breaks points on the root like
-
+this adds the responsive breaks points as css variables on the root which is really all that's needed for the library to detect where the breakpoints are set.  I'm hoping this can somehow work with the WordPress block editor when breakpoints are added to theme.json
 
 ```
 root {
@@ -68,10 +83,17 @@ root {
     --bs-breakpoints: xs, sm, md, lg, xl, xxl;
 }
 ```
-which is really all that's needed for the library to detect where the breakpoints are set
 
+## Building and working with the scripts
 
 you can use the JavaScript class directly by importing it into you project
 ```
 import ResponsiveWrapper from './responsive-wrapper/src/classes/class-responsive-wrapper'
+let responsiveWrapper = new ResponsiveWrapper();
 ```
+
+if you want to use the scripts directly you should get and verify all your elements on the page
+
+```
+let 
+responsiveWrapper

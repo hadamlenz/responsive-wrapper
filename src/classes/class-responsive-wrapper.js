@@ -18,9 +18,9 @@ export default class ResponsiveWrapper {
 
     /**
      * create a new ResponsiveWrapperSingle object and return it
-     * @param {*} wrapper 
-     * @param {*} objects 
-     * @param {*} options 
+     * @param {HTMLElement or String}  if its an HTMLElement it is expected that the element is on the page, if it's a string, the element will be created
+     * @param {Array of HTMLElement} elements that will be wrapped
+     * @param {Object} options see options for the class in class-responsive-wrapper-single.js
      * @returns ResponsiveWrapperSingle
      */
     wrap( wrapper, objects, options = [] ){
@@ -28,10 +28,10 @@ export default class ResponsiveWrapper {
     }
 
     /**
-     * create a new ResponsiveWrapperFactory object and return it
-     * @param {*} wrapper 
-     * @param {*} objects 
-     * @param {*} options 
+     * create a new ResponsiveWrapperFactory object and return it.  This allows you to double wrap things like you have to do with bootstrap
+     * @param {Array of HTMLElement} wrappers 
+     * @param {Array of HTMLElement} objects 
+     * @param {Object} options 
      * @returns ResponsiveWrapperFactory
      */
     wraps(wrappers, elements, options=[]){
