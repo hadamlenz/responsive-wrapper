@@ -1,6 +1,10 @@
 # Responsive Wrappers
 supply functionality for making a div wrap child elements at responsive breakpoints.  
-This repo is a work in progress and should not be used in production just yet
+This repo is a work in progress and should not be used in production just yet.
+
+Todo:
+* Make it available with NPM
+* Testing testing testing
 
 starts with bootstrap 5 breakpoints
 you can  add the dist files to the page you are working on 
