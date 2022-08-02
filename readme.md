@@ -31,7 +31,8 @@ The functions are available with `responsiveWrapper` class if you added the scri
 ```
 /**
  * create a new ResponsiveWrapperSingle object and return it
- * @param {HTMLElement or String} wrapper.  if its an HTMLElement it is expected that the element is on the page, if it's a string, the element will be created
+ * @param {HTMLElement or String} wrapper.  if its an HTMLElement 
+ * it is expected that the element is on the page, if it's a string, the element will be created
  * @param {Array of HTMLElement} elements that will be wrapped
  * @param {Object} options see options for the class in class-responsive-wrapper-single.js
  * @returns ResponsiveWrapperSingle
@@ -41,7 +42,8 @@ responsiveWrapper.wrap(wrapper, objects, options = [])
 
 ```
 /**
- * create a new ResponsiveWrapperFactory object and return it.  This allows you to double wrap things like you have to do with bootstrap
+ * create a new ResponsiveWrapperFactory object and return it.  
+ * This allows you to double wrap things like you have to do with bootstrap
  * @param {Array of HTMLElement} wrappers 
  * @param {Array of HTMLElement} objects 
  * @param {Object} options 
