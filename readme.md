@@ -4,19 +4,33 @@ This repo is a work in progress and should not be used in production just yet
 
 starts with bootstrap 5 breakpoints
 you can  add the dist files to the page you are working on 
+
 ```
 <link rel='stylesheet' id='responsive-wrapper' href="./src/js/responsive-wrapper/dist/responsive-wrapper.css"></script>
 <script src="./src/js/responsive-wrapper/dist/responsive-wrapper.js"></script>
 ```
 
-all the functions are available with responsiveWrapper
+you can apply the functionality by setting some attributes on the wrapper and children you want to change.  Its really important that all of the elements that you are using have an id attribute.  The script will look for the `responsive-wrapper` class.  The wrapper will wrap the child elements when the current breakpoint up is in the `data-rw-breakpoints`
+
+```
+<div id="row-sm" class="responsive-wrapper" data-rw-breakpoints="xs,sm">
+    <div id="site-identity">Site itentity</div>
+    <div id="site-controls">Site Controls</div>
+</div>
+```
+
+all the functions are available with responsiveWrapper class
 
 ## functions
 
-```wrap()```
+```
+wrap()
+```
 
 
-```wraps()```
+```
+wraps()
+```
 
 you can build it with whatever you like using $grid-breakpoints building into your project
 
@@ -54,36 +68,6 @@ which is really all that's needed for the library to detect where the breakpoint
 
 
 you can use the JavaScript class directly by importing it into you project
-`import ResponsiveWrapper from './responsive-wrapper/src/classes/class-responsive-wrapper'`
-
-
 ```
-let smPlusWrapper = new ResponsiveWrapper( topContainer, [siteIdentity, siteControls] );
-let topRowWrapper = new ResponsiveWrapper( topRow );
-let topContainerWrapper = new ResponsiveWrapper( topContainer );
-```
-
-```
-new responsiveWrapper([siteIdentity, siteControls], 'top-row', {
-    wrapper_classes: ["theme-row"],
-    breakpoints: ['xs', 'sm'],
-});
-```
-
-```
- new responsiveWrappers({
-        breakpoints: ['all'],
-        make: true,
-        elements: ['#theme-header.header-varient-hamburger #search', '#theme-header.header-varient-hamburger #primary-nav', '#theme-header.header-varient-hamburger #secondary-nav'],
-        wrapper_ids: ['bottom-row','bottom-container'],
-        wrapper_classes: [["theme-row"],["theme-container"]]       
-    });
-```
-
-
-```
-<div id="<?php echo $varient ?>-top-row-sm" class="theme-row responsive-wrapper" data-rw-group="top-sm" data-rw-breakpoints="xs,sm">
-    <div id="site-identity" data-rw-child-group="top-sm">Site itentity</div>
-    <div id="site-controls" data-rw-child-group="top-sm">Site Controls</div>
-</div>
+import ResponsiveWrapper from './responsive-wrapper/src/classes/class-responsive-wrapper'
 ```
