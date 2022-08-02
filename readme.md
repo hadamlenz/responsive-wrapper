@@ -6,6 +6,7 @@ Todo:
 * Make it available with NPM
 * Testing testing testing
 * Test if this works without bootstrap
+* build examples
 
 starts with bootstrap 5 breakpoints
 you can  add the distribution files to the page you are working on 
