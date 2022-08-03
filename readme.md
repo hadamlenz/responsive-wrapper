@@ -8,7 +8,7 @@ Todo:
 * Test if this works without bootstrap
 * build examples for https://htmlpreview.github.io/
 
-you can  add the distribution files to the page you are working on 
+you can include the distribution files to the page you are working on 
 
 ```
 <link rel='stylesheet' id='responsive-wrapper' href="./src/js/responsive-wrapper/dist/responsive-wrapper.css"/>
@@ -94,16 +94,17 @@ you can use the JavaScript class directly by importing it into you project
 import ResponsiveWrapper from './responsive-wrapper/src/classes/class-responsive-wrapper'
 let responsiveWrapper = new ResponsiveWrapper();
 ```
+if you've linked the distribution files to the page you can skip this part... a new `responsiveWrapper` is available at `window.responsiveWrapper`
 
 if you want to use the scripts directly you should get and verify all your elements on the page
-
 ```
+//make sure the dom is loaded
 document.addEventListener("DOMContentLoaded", function () {
     //get the elements for wrapping
     let el1 = document.querySelector('#element-one');
     let el2 = document.querySelector('#element-two');
 
-    //make sure the exist
+    //make sure the elements exist
     if( el1 && el2 ){
         //build a wrapper, making a new div with the id #my-new-wrapper using the 2 elements from above
         responsiveWrapper.wrap('my-new-wrapper',[el1,el2]{
@@ -113,8 +114,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 ```
 
-## Contributions and Rebuilding the distribution files
-the project is built with @wordpress/scripts because this is ulimatly meant for WordPress and it makes life simple...  Just one devDependencies.  If you want to fork and make this your own you need to use `npm run build` to build the dist
+## Building
+the project is built with @wordpress/scripts because this is ulimatly meant for WordPress and it makes life simple...  Just one devDependencies.  
 
+to build the dist `npm install` and then `npm run build` .  please contribute
 
 ...more to come
