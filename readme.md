@@ -10,14 +10,14 @@ Todo:
 
 you can include the distribution files to the page you are working on 
 
-```
+```js
 <link rel='stylesheet' id='responsive-wrapper' href="./src/js/responsive-wrapper/dist/responsive-wrapper.css"/>
 <script src="./src/js/responsive-wrapper/dist/responsive-wrapper.js"></script>
 ```
 
 you can apply the functionality by setting some attributes on the wrapper and children you want to change.  Its really important that all of the elements that you are using have an id attribute.  The script will look for the `responsive-wrapper` class.  The wrapper will wrap the child elements when the current breakpoint up is in the `data-rw-breakpoints`.  For the below example the wrapper will wrap the 2 elements when `0 < width < 768px` because xs is 0 - 576 and sm is 577 to 768.
 
-```
+```html
 <div id="row-sm" class="responsive-wrapper" data-rw-breakpoints="xs,sm">
     <div id="site-identity">Site itentity</div>
     <div id="site-controls">Site Controls</div>
@@ -30,7 +30,7 @@ todo: add more here descibing grouping without having to use the children of a w
 
 The functions are available with `responsiveWrapper` class if you added the scripts and styles to the page.
 
-```
+```js
 /**
  * create a new ResponsiveWrapperSingle object and return it
  * @param {HTMLElement or String} wrapper.  if its an HTMLElement 
@@ -42,7 +42,7 @@ The functions are available with `responsiveWrapper` class if you added the scri
 responsiveWrapper.wrap(wrapper, objects, options = [])
 ```
 
-```
+```js
 /**
  * create a new ResponsiveWrapperFactory object and return it.  
  * This allows you to double wrap things like you have to do with bootstrap
@@ -57,7 +57,7 @@ responsiveWrapper.wraps(wrappers, elements, options=[])
 ## Building Styles
 you can build he styles with whatever breakpoints you like using the $grid-breakpoints css var like bootstrap 5 does
 
-```
+```scss
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
@@ -75,7 +75,7 @@ you can also import the dist css file into you scss if you are good with the def
 
 this adds the responsive breaks points as css variables on the root which is really all that's needed for the library to detect where the breakpoints are set.  I'm hoping this can somehow work with the WordPress block editor when breakpoints are added to theme.json
 
-```
+```css
 root {
     --bs-breakpoint-xs: 0;
     --bs-breakpoint-sm: 576px;
@@ -90,14 +90,14 @@ root {
 ## Building and working with the scripts
 
 you can use the JavaScript class directly by importing it into you project
-```
+```js
 import ResponsiveWrapper from './responsive-wrapper/src/classes/class-responsive-wrapper'
 let responsiveWrapper = new ResponsiveWrapper();
 ```
 if you've linked the distribution files to the page you can skip this part... a new `responsiveWrapper` is available at `window.responsiveWrapper`
 
 if you want to use the scripts directly you should get and verify all your elements on the page
-```
+```js
 //make sure the dom is loaded
 document.addEventListener("DOMContentLoaded", function () {
     //get the elements for wrapping
