@@ -1,5 +1,5 @@
 # Responsive Wrappers
-supply functionality for making a div wrap child elements at responsive breakpoints.   It defaults to the bootstrap 5 breakpoints
+supply functionality for making a div wrap child elements at responsive breakpoints.   It defaults to the bootstrap 5 breakpoints.  
 This repo is a work in progress and should not be used in production just yet.
 
 Todo:
