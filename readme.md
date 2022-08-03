@@ -1,5 +1,5 @@
 # Responsive Wrappers
-supply functionality for making a div wrap child elements at responsive breakpoints. 
+supply functionality for making a div wrap child elements at responsive breakpoints.   It defaults to the bootstrap 5 breakpoints
 This repo is a work in progress and should not be used in production just yet.
 
 Todo:
@@ -8,7 +8,6 @@ Todo:
 * Test if this works without bootstrap
 * build examples for https://htmlpreview.github.io/
 
-starts with bootstrap 5 breakpoints
 you can  add the distribution files to the page you are working on 
 
 ```
@@ -16,7 +15,7 @@ you can  add the distribution files to the page you are working on
 <script src="./src/js/responsive-wrapper/dist/responsive-wrapper.js"></script>
 ```
 
-you can apply the functionality by setting some attributes on the wrapper and children you want to change.  Its really important that all of the elements that you are using have an id attribute.  The script will look for the `responsive-wrapper` class.  The wrapper will wrap the child elements when the current breakpoint up is in the `data-rw-breakpoints`.  For the below example the wrapper will wrap the 2 elements when `0 < width < 768px`
+you can apply the functionality by setting some attributes on the wrapper and children you want to change.  Its really important that all of the elements that you are using have an id attribute.  The script will look for the `responsive-wrapper` class.  The wrapper will wrap the child elements when the current breakpoint up is in the `data-rw-breakpoints`.  For the below example the wrapper will wrap the 2 elements when `0 < width < 768px` because xs is 0 - 576 and sm is 577 to 768.
 
 ```
 <div id="row-sm" class="responsive-wrapper" data-rw-breakpoints="xs,sm">
