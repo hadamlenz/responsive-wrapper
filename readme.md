@@ -28,7 +28,7 @@ todo: add more here descibing grouping without having to use the children of a w
 
 ## functions
 
-The functions are available with `responsiveWrapper` class if you added the scripts and styles to the page.
+The functions are available with `responsiveWrapper` object if you added the scripts and styles to the page.
 
 ```js
 /**
@@ -55,7 +55,7 @@ responsiveWrapper.wraps(wrappers, elements, options=[])
 ```
 
 ## Building Styles
-you can build he styles with whatever breakpoints you like using the $grid-breakpoints css var like bootstrap 5 does
+you can build the styles with whatever breakpoints you like using the $grid-breakpoints css var like bootstrap 5 does
 
 ```scss
 $grid-breakpoints: (
@@ -91,7 +91,7 @@ root {
 
 you can use the JavaScript class directly by importing it into you project
 ```js
-import ResponsiveWrapper from './responsive-wrapper/src/classes/class-responsive-wrapper'
+import { ResponsiveWrapper } from './responsive-wrapper/responsive-wrapper'
 let responsiveWrapper = new ResponsiveWrapper();
 ```
 if you've linked the distribution files to the page you can skip this part... a new `responsiveWrapper` is available at `window.responsiveWrapper`
@@ -113,6 +113,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 ```
+
+You can also directly import the different classes and work with the functionality that way
+
+```js
+import { ResponsiveWrapperSingle } from './responsive-wrapper/responsive-wrapper';
+let rwSingle = new ResponsiveWrapperSingle( wrapper, objects = null, options = [] );
+```
+
+Look to the class files for more explination on using the classes directly.  they are documented well
 
 ## Building
 the project is built with @wordpress/scripts because this is ulimatly meant for WordPress and it makes life simple...  Just one devDependencies.  
