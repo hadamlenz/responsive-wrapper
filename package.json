@@ -4,7 +4,7 @@
   "description": "supply functionality for making a div wrap child elements at responsive breakpoints",
   "main": "gulpfile.js",
   "scripts": {
-    "build": "wp-scripts build src/responsive-wrapper.js --output-path=dist --webpack-devtool"
+    "build": "wp-scripts build responsive-wrapper.js --output-path=dist --webpack-devtool"
   },
   "author": "H. Adam Lenz",
   "license": "ISC",
