@@ -58,12 +58,12 @@ export default class ResponsiveWrapperSingle {
     wrapperId = null;
 
     /**
-     * Set up the class params and maybe make() the wrapper
+     * Set up the class params and maybe toggle() the wrapper on
      * @param {domObject or String} wrapper (required) we are making the wrapper we need an ID, if we are using one on the page we need the domObject
      * @param {domObject or domObject list} objects a dom object or list of objects that will get wrapped
      * @param {object} options the options used for building the wrapper
      * @param {String or Array} options.breakpoints (optional) the mobile first breakpoint at which to do the wrap
-     * @param {Boolen} options.make (optional) make without having to call it, you can also call it later if you need it made at a different time
+     * @param {Boolen} options.toggle (optional) toggle without having to call it, you can also call it later if you need it made at a different time
      * @param {String or Array} options.wrapper_classes (optional) array or string of classes to apply to the wrapper,
      */
     constructor(wrapper, objects = null, options = []) {
@@ -71,7 +71,7 @@ export default class ResponsiveWrapperSingle {
         //make the wrapper
         if (false === this.makeWrapper(wrapper, options)) {
             //return false if we could not make the wrapper
-            console.error('could not make the wrapper ' + this.wrapperId);
+            console.error('could not make the wrapper ' + wrapper);
             return false
         }
 
@@ -96,14 +96,14 @@ export default class ResponsiveWrapperSingle {
         }
 
         //if we are gonna make it, lets make it!!
-        if (options.make !== false) {
+        if (options.toggle !== false) {
             //console.log( 'calling make on initialization for ' + this.wrapperId )
-            this.make();
+            this.toggle();
 
             //when the bootstrap detector sends a change
             this.detector.on('change', function (event) {
                 //console.log( 'calling make on change for ' + this.wrapperId )
-                this.make();
+                this.toggle();
             }.bind(this))
         }
         //console.log(this.wrapperId + 'isWrapped:' + this.isWrapped);
@@ -115,14 +115,14 @@ export default class ResponsiveWrapperSingle {
     * most dom manipulation should stem from here
     * you can also call this function later if you set make:false in the options
     */
-    make() {
+    toggle() {
         //console.log( 'make for:' + this.wrapperId + ' shoudWrap:' + this.shouldWrap() + ' && isWrapped:' + this.isWrapped);
         if (this.shouldWrap() == true && this.isWrapped == false ) { //if it's the right size to wrap and it's not already wrapped we wrap it
-            //console.log( 'make() wrap' );
+            //console.log( 'toggle() wrap' );
             this.wrap();
 
         } else if (this.shouldWrap() == false && this.isWrapped == true) {//if its not the right size to wrap and its wrapped we unwrap it
-            //console.log( 'make() unwrap' );
+            //console.log( 'toggle() unwrap' );
             this.unwrap();
 
         } else{
@@ -319,6 +319,7 @@ export default class ResponsiveWrapperSingle {
         //the wrapper is placed, move the els into it
         for (var i in els) {
             let elContent = els[i];
+            //console.log( 'adding the child' + elContent);
             this.wrapper.appendChild(elContent);
         }
 

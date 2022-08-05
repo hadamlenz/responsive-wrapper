@@ -10,7 +10,7 @@ export default class ResponsiveWrapper {
     init = null
 
     constructor( options = []) {
-        //detect responsive-wrapper classes
+        //detect responsive-wrapper classes in the dom
         if( options.init !== false ){
             this.init = new ResponsiveWrapperInit();
         }

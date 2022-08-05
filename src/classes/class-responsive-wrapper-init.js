@@ -21,6 +21,7 @@ export default class ResponsiveWrapperInit {
             //sanity check for all the possible wrappers
             //make sure we have IDs
             if (!possibleWrappers[i].id) {
+                console.log('missing IDs to make the wrapper')
                 continue;
             }
 
@@ -64,6 +65,7 @@ export default class ResponsiveWrapperInit {
 
         //make wrapper factories
         for (var i in factoryWrappers) {
+            //console.log( 'making wrapper factories' );
             //console.log(factoryWrappers[i]);
             new ResponsiveWrapperFactory(factoryWrappers[i]);
         }
