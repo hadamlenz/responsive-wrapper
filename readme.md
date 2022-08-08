@@ -124,7 +124,7 @@ let rwSingle = new ResponsiveWrapperSingle( wrapper, objects = null, options = [
 Look to the class files for more explination on using the classes directly.  they are documented well
 
 ## Building
-the project is built with @wordpress/scripts because this is ulimatly meant for WordPress and it makes life simple...  Just one devDependencies.  
+the project is built with [@wordpress/scripts](https://github.com/WordPress/gutenberg/blob/9e3767cc217542d4e4926280a91feb584b3f7a7b/packages/scripts/README.md) because this is ulimatly meant for WordPress and it makes life simple...  Just one entry devDependencies and a lite webpack.config.js file.  
 
 to build the dist `npm install` and then `npm run build` .  please contribute
 

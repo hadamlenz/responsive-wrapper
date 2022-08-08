@@ -21,19 +21,6 @@ module.exports = {
     }
   },
   ...defaultConfig,
-  module: {
-    ...defaultConfig.module,
-    rules: [
-      ...defaultConfig.module.rules,
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource',
-        generator: {
-          filename: '../fonts/[name][ext]',
-        },
-      },
-    ]
-  },
   performance: {
     hints: false,
     maxEntrypointSize: 512000,
