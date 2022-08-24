@@ -38,6 +38,11 @@ export default class ResponsiveWrapperSingle {
     dispatcher = null;
 
     /**
+     * the dom object of an iframe that we will be using for window context
+     */
+    iframe = null;
+
+    /**
      * if the elements are wrapped in the wrapper
      */
     isWrapped = false;
@@ -86,9 +91,14 @@ export default class ResponsiveWrapperSingle {
 
         //we should have childElements if we get here
         //console.log(this.childElements);
-
+        
         //setup a bootstrap breakpoint detector
-        this.detector = new ResponsiveWrapperBootstrapDetectBreakpoint({ dispatchEvent: true });
+        let detectorSettings = { dispatchEvent: true };
+        if( options.iframe ){
+            detectorSettings.iframe = options.iframe;
+            //console.log( 'using an iframe for window context');
+        }
+        this.detector = new ResponsiveWrapperBootstrapDetectBreakpoint( detectorSettings );
 
         //maybe setup an event dispatcher
         if (this.dispatchEvents) {
@@ -156,7 +166,7 @@ export default class ResponsiveWrapperSingle {
             this.wrapperClasses = options.wrapper_classes ? options.wrapper_classes : null;
             //maybe set the breakpoints parameter
             this.breakpoints = options.breakpoints ? options.breakpoints : null;
-        } else if (wrapper instanceof Element) {
+        } else if (wrapper instanceof Element || wrapper instanceof HTMLDivElement || typeof wrapper === 'object' ) {
             //we already have the wrapper on the page, lets use those values for the object
             //make sure it has an ID
             if (wrapper.id) {
@@ -176,6 +186,7 @@ export default class ResponsiveWrapperSingle {
         } else {
             //we need an ID as a string or Element!!!
             console.error('id is not a string or a dom element: ' + typeof wrapper);
+
             return false;
         }
 

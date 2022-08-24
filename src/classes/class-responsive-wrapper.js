@@ -7,12 +7,18 @@ import ResponsiveWrapperFactory from "./class-responsive-wrapper-factory";
 import ResponsiveWrapperInit from "./class-responsive-wrapper-init";
 export default class ResponsiveWrapper {
 
-    init = null
+    init = null;
+
+    iframe = null;
 
     constructor( options = []) {
+        this.iframe = options.iframe ? options.iframe : null;
+        
         //detect responsive-wrapper classes in the dom
         if( options.init !== false ){
-            this.init = new ResponsiveWrapperInit();
+            let initOptions = [];
+            initOptions.iframe ? options.iframe : null;
+            this.init = new ResponsiveWrapperInit( initOptions );
         }
     }
 
@@ -25,6 +31,9 @@ export default class ResponsiveWrapper {
      * @returns ResponsiveWrapperSingle
      */
     wrap( wrapper, objects, options = [] ){
+        if( this.iframe !== null ){
+            options.iframe = this.iframe;
+        }
         return new ResponsiveWrapperSingle( wrapper, objects, options );
     }
 
@@ -37,6 +46,9 @@ export default class ResponsiveWrapper {
      * @returns ResponsiveWrapperFactory
      */
     wraps(wrappers, elements, options=[]){
+        if( this.iframe !== null ){
+            options.iframe = this.iframe;
+        }
         return new ResponsiveWrapperFactory(wrappers, elements, options);
     }
 

@@ -30,13 +30,29 @@ export default class ResponsiveWrapperBootstrapDetectBreakpoint {
 
     events = [];
 
+    iframe = null;
+
+    window = null;
+
     /**
      * 
      * @param {object} options the options used for building the object
      * @param {bool} options.dispatchEvent - if we want to dispact the events, dont make the dispatcher if you aren't going to dispatch events
      * @param {bool} options.setBodyClasses - if want to change the body class to represent the current breakpoint, you should only be setting the body class 
+     * @param {Element} options.iframe - if we are looking at the iframe instead of the window, add the iframe dom object
      */
     constructor(options) {
+
+        //if we are setting the iframe eleement we are changing te context of window to be the iframe window conteext
+        if( options.iframe ){
+            //console.log( options.iframe );
+            this.iframe = options.iframe;
+            this.window = options.iframe.contentWindow;
+        } 
+
+        if( this.window == null ){
+            this.window = window;
+        }
 
         this.dispatchTheEvent = options.dispatchEvent === true ? true : false;
 
@@ -78,7 +94,7 @@ export default class ResponsiveWrapperBootstrapDetectBreakpoint {
             i--;
             let cssVar = "--bs-breakpoint-" + breakpointName.trim();
             //console.log(cssVar);
-            const value = window.getComputedStyle(document.documentElement).getPropertyValue(cssVar)
+            const value =  this.window.getComputedStyle(document.documentElement).getPropertyValue(cssVar)
             //console.log(value);
             if (value) {
                 this.breakpointValues[i] = { name: breakpointName.trim(), index: i, value: value }
@@ -103,7 +119,7 @@ export default class ResponsiveWrapperBootstrapDetectBreakpoint {
                 //console.log('set the up breakpoint, window is larger than this');
                 for (let i = 0; i < length; i++) {
                     const upMediaQuery = '(min-width: ' + this.breakpointValues[i].value + ')';
-                    const upMediaQueryList = window.matchMedia(upMediaQuery);
+                    const upMediaQueryList = this.window.matchMedia(upMediaQuery);
                     //we found a match
                     if (upMediaQueryList.matches === true) {
                         //console.log('window is larger than ' + this.breakpointValues[i].value)
@@ -119,7 +135,7 @@ export default class ResponsiveWrapperBootstrapDetectBreakpoint {
                 //console.log('set the down breakpoint. window is smaller than this');
                 for (let i = length - 1; i >= 0; i--) {
                     const downMediaQuery = '(max-width: ' + this.breakpointValues[i].value + ')';
-                    const downMediaQueryList = window.matchMedia(downMediaQuery);
+                    const downMediaQueryList = this.window.matchMedia(downMediaQuery);
                     //we found a match
                     if (downMediaQueryList.matches === true) {
                         //console.log('window is smaller than ' + this.breakpointValues[i].value)
@@ -142,11 +158,11 @@ export default class ResponsiveWrapperBootstrapDetectBreakpoint {
 
             //set a matchMedia for when the screen is smaller than the breakpoints.up
             const mediaQueryChangeUp = '(min-width: ' + this.breakpoints.up.value + ')';
-            const mediaQueryListChangeUp = window.matchMedia(mediaQueryChangeUp);
+            const mediaQueryListChangeUp = this.window.matchMedia(mediaQueryChangeUp);
 
             //set a matchMedia for when the screen is larger than the breakpoints.down
             const mediaQueryChangeDown = '(min-width: ' + this.breakpoints.down.value + ')';
-            const mediaQueryListChangeDown = window.matchMedia(mediaQueryChangeDown);
+            const mediaQueryListChangeDown = this.window.matchMedia(mediaQueryChangeDown);
 
             //this needs to be it's own function so we can remove it
             function crossMediaQueryThreshold(event) {
